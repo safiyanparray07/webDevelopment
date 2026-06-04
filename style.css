@@ -1,0 +1,27 @@
+body{
+    background-color: lightgray;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+h1{
+    font-size:50px;
+    padding:20px;
+    margin:5px;
+    color:rgb(32, 153, 193);
+}
+.calculator{
+    width:300px;
+    margin:20px auto;
+    padding:20px;
+    border:1px solid black;
+}
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    background-color: rgb(16, 15, 15);
+    color :rgb(15, 222, 153);
+}
