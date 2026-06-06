@@ -3,33 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>calculator</title>
+    <title>Calculator</title>
+
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <h1>Calculator</h1>
-    <div class = "calculator ">
-        <input type = "text" id = "result" class = "Result" readonly>
-       <input type="button" value="=" class="equal" onclick="calculate()">
-        <div class = "buttons">
-            <button onclick ="ClearResult()">AC</button>
-            <button onclick="AppendValue('1')">1</button>
-            <button onclick="AppendValue('2')">2</button>
-            <button onclick="AppendValue('3')">3</button>
-            <button onclick="AppendValue('4')">4</button>
-            <button onclick="AppendValue('5')">5</button>
-            <button onclick="AppendValue('6')">6</button>
-            <button onclick="AppendValue('7')">7</button>
-            <button onclick="AppendValue('8')">8</button>
-            <button onclick="AppendValue('9')">9</button>
-            <button onclick="AppendValue('0')">0</button>
-            <button onclick="AppendValue('+')">+</button>
-            <button onclick="AppendValue('-')">-</button>
-            <button onclick="AppendValue('*')">*</button>
-            <button onclick="AppendValue('/')">/</button>
-            <button onclick="AppendValue('%')">%</button>
-        </div>
+
+    <h1 class="text-center text-3xl font-bold my-4">Calculator</h1>
+
+    <div class="calculator">
+
+        <!-- Display -->
+        <input
+            type="text"
+            id="result"
+            readonly
+            class="w-full h-20 text-3xl p-4 mb-4 bg-gray-800 text-white border border-gray-100 rounded-lg text-right focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+        <!-- Top Buttons -->
+        <button class="bg-red-600 text-white px-2 py-2 rounded"
+                onclick="clearResult()">
+            AC
+        </button>
+
+        <button class="bg-blue-500 text-white px-4 py-2 rounded"
+                onclick="AppendValue('backspace')">
+            ⌫
+        </button>
+
+        <button class="bg-green-500 text-white px-4 py-2 rounded"
+                onclick="calculate()">
+            =
+        </button>
+
+        <!-- Numbers -->
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('1')">1</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('2')">2</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('3')">3</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('4')">4</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('5')">5</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('6')">6</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('7')">7</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('8')">8</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('9')">9</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="AppendValue('0')">0</button>
+
+        <!-- Operators -->
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue('+')">+</button>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue('-')">−</button>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue('*')">×</button>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue('/')">÷</button>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue('%')">%</button>
+
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue('.')">.</button>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue('(')">(</button>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue(')')">)</button>
+        <button class="bg-orange-500 text-white px-4 py-2 rounded" onclick="AppendValue('**')">^</button>
+
+        <!-- Scientific -->
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.sqrt(')">√</button>
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.log10(')">log₁₀</button>
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.log(')">ln</button>
+
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.sin(')">sin</button>
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.cos(')">cos</button>
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.tan(')">tan</button>
+
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.PI')">π</button>
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.E')">e</button>
+
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('Math.pow(')">xʸ</button>
+        <button class="bg-purple-500 text-white px-4 py-2 rounded" onclick="AppendValue('**2')"> x²</button>
+
     </div>
-    <script src = "script.js"></script>
+
+    <script src="script.js"></script>
+
 </body>
 </html>

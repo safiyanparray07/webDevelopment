@@ -1,12 +1,23 @@
 function AppendValue(value) {
-    document.getElementById("result").value += value;
+    let result = document.getElementById("result");
+
+    if (value === "backspace") {
+        result.value = result.value.slice(0, -1);
+    } else {
+        result.value += value;
+    }
 }
 
-function ClearResult() {
+function clearResult() {
     document.getElementById("result").value = "";
 }
 
 function calculate() {
-    let expression = document.getElementById("result").value;
-    document.getElementById("result").value = eval(expression);
+    let result = document.getElementById("result");
+
+    try {
+        result.value = eval(result.value);
+    } catch (error) {
+        result.value = "Error";
+    }
 }
